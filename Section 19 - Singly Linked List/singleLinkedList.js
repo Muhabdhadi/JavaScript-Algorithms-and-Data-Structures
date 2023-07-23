@@ -128,6 +128,29 @@ class SinglyLinkedList {
             return true;
         }
     }
+
+    insert(index, value) {
+        debugger;
+        
+        if(index < 0 || index > this.length) return false;
+        if(index === this.length) return !!this.push(value); 
+        if(index === 0) return !!this.unshift(value);
+        
+        const newNode = new Node(value);
+        
+        const previousFoundNode = this.get(index - 1);
+        
+        const temp = previousFoundNode.next;
+
+        newNode.next = temp;
+        
+        previousFoundNode.next = newNode;
+        
+        this.length++;
+        
+        return true;
+        
+    }
 }
 
 const singlyLinkedList = new SinglyLinkedList();
@@ -139,5 +162,5 @@ singlyLinkedList.push('s');
 // console.log(singlyLinkedList);
 // console.log(singlyLinkedList.unshift('Mann'));
 // console.log(singlyLinkedList);
-console.log(singlyLinkedList.set(33, 'BB'));;
+console.log(singlyLinkedList.insert(0, 'BB'));;
 console.log(singlyLinkedList);
