@@ -28,7 +28,7 @@ class SinglyLinkedList {
             this.tail = newNode;
         }
 
-        this.length+=1;
+        this.length++;
     }
 
     pop() {
@@ -139,7 +139,7 @@ class SinglyLinkedList {
         const newNode = new Node(value);
         
         const previousFoundNode = this.get(index - 1);
-        
+
         const temp = previousFoundNode.next;
 
         newNode.next = temp;
@@ -151,16 +151,28 @@ class SinglyLinkedList {
         return true;
         
     }
+
+    remove(index) {
+        if(index < 0 || index >= this.length) return undefined;
+        if(index === this.length - 1) return this.pop();
+        if(index === 0) return this.shift();
+        const prevNode = this.get(index - 1);
+        const removed = prevNode.next;
+        prevNode.next = removed.next;
+        this.length--;
+        return removed;
+    }
 }
 
 const singlyLinkedList = new SinglyLinkedList();
 singlyLinkedList.push('Hello');
 singlyLinkedList.push('World');
-singlyLinkedList.push('!');
+singlyLinkedList.push('!!');
 singlyLinkedList.push('s');
 
 // console.log(singlyLinkedList);
 // console.log(singlyLinkedList.unshift('Mann'));
 // console.log(singlyLinkedList);
-console.log(singlyLinkedList.insert(0, 'BB'));;
+console.log(singlyLinkedList.remove(2));;
 console.log(singlyLinkedList);
+// console.log(singlyLinkedList);
