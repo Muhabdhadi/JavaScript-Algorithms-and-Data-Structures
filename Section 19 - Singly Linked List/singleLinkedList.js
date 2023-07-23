@@ -75,18 +75,42 @@ class SinglyLinkedList {
     }
 
     unshift(value) {
+       
         const newNode = new Node(value);
         
         if(!this.head) {
+       
             this.head = newNode;
+       
             this.tail = newNode;
         } else {
+        
             newNode.next = this.head;
+        
             this.head = newNode;
         }
+        
         this.length++;
 
         return this
+    }
+
+    get(index) {
+        
+        if(index < 0 || index >= this.length) return null;
+        
+        let counter = 0;
+        
+        let current = this.head;
+        
+        while(counter !== index) {
+        
+            current = current.next;
+        
+            counter++;
+        }
+        
+        return current;
     }
 }
 
@@ -94,6 +118,9 @@ const singlyLinkedList = new SinglyLinkedList();
 singlyLinkedList.push('Hello');
 singlyLinkedList.push('World');
 singlyLinkedList.push('!');
-console.log(singlyLinkedList);
-console.log(singlyLinkedList.unshift('Mann'));
-console.log(singlyLinkedList);
+singlyLinkedList.push('s');
+
+// console.log(singlyLinkedList);
+// console.log(singlyLinkedList.unshift('Mann'));
+// console.log(singlyLinkedList);
+console.log(singlyLinkedList.get(-1));
