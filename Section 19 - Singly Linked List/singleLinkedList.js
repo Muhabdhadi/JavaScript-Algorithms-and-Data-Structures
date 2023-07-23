@@ -112,6 +112,22 @@ class SinglyLinkedList {
         
         return current;
     }
+
+    set(index, value) {
+        
+        const foundNode = this.get(index);
+
+        if(!foundNode) {
+            
+            return false;
+
+        } else {
+            
+            foundNode.value = value;
+            
+            return true;
+        }
+    }
 }
 
 const singlyLinkedList = new SinglyLinkedList();
@@ -123,4 +139,5 @@ singlyLinkedList.push('s');
 // console.log(singlyLinkedList);
 // console.log(singlyLinkedList.unshift('Mann'));
 // console.log(singlyLinkedList);
-console.log(singlyLinkedList.get(-1));
+console.log(singlyLinkedList.set(33, 'BB'));;
+console.log(singlyLinkedList);
