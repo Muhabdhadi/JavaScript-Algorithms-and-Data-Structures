@@ -162,6 +162,33 @@ class SinglyLinkedList {
         this.length--;
         return removed;
     }
+
+    reverse2() {
+        let prev = null;
+        let current =  this.head;
+        let following = this.head;
+        while(current !== null) {
+            following = following.next;
+            current.next = prev;
+            prev = current
+            current = following;
+        }
+        this.tail = this.head;
+        this.head = prev;
+        return this;
+    }
+
+
+    /** helper function to display linked list as array to make sure it is correctly reversed  */ 
+    print() {
+        let arr = [];
+        let current = this.head;
+        while(current) {
+            arr.push(current.value);
+            current = current.next;
+        }
+        console.log(arr);
+    } 
 }
 
 const singlyLinkedList = new SinglyLinkedList();
@@ -173,6 +200,5 @@ singlyLinkedList.push('s');
 // console.log(singlyLinkedList);
 // console.log(singlyLinkedList.unshift('Mann'));
 // console.log(singlyLinkedList);
-console.log(singlyLinkedList.remove(2));;
-console.log(singlyLinkedList);
-// console.log(singlyLinkedList);
+console.log(singlyLinkedList.reverse2()); 
+singlyLinkedList.print();
