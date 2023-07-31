@@ -47,12 +47,35 @@ class DoublyLinkedList {
         this.length--;
         return removed;
     }
+
+    shift() {
+        if (!this.head) return undefined;
+        
+        let toBeDeleted = this.head;
+        
+        if (this.length === 1) {
+            this.head = null;
+            this.tail = null;
+        }
+
+        if (this.length > 1) {
+            this.head = this.head.next;
+            this.head.prev = null;
+            toBeDeleted.next = null;
+        }
+
+        this.length--;
+        return toBeDeleted;
+    }
 }
 
 let doublyLinkedList = new DoublyLinkedList();
-doublyLinkedList.push('1');
-doublyLinkedList.push('2');
-doublyLinkedList.push('3');
-doublyLinkedList.pop();
-doublyLinkedList.pop();
+doublyLinkedList.push('Harry');
+doublyLinkedList.push('Ron');
+doublyLinkedList.push('Hermione');
+console.log(doublyLinkedList.shift());
+console.log(doublyLinkedList.shift());
+console.log(doublyLinkedList.shift());
+console.log(doublyLinkedList.shift());
+
 console.log(doublyLinkedList);
