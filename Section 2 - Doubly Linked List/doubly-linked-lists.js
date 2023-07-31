@@ -67,15 +67,29 @@ class DoublyLinkedList {
         this.length--;
         return toBeDeleted;
     }
+
+    unshift(value) {
+        const node = new Node(value);
+
+        if(!this.length) {
+            this.head = node;
+            this.tail = node;
+        }
+
+        if(this.length) {
+            this.head.prev = node;
+            node.next = this.head;
+            this.head = node;
+        }
+        this.length++;
+        return this
+    }
 }
 
 let doublyLinkedList = new DoublyLinkedList();
 doublyLinkedList.push('Harry');
 doublyLinkedList.push('Ron');
 doublyLinkedList.push('Hermione');
-console.log(doublyLinkedList.shift());
-console.log(doublyLinkedList.shift());
-console.log(doublyLinkedList.shift());
-console.log(doublyLinkedList.shift());
+doublyLinkedList.unshift('Muhammad');
 
 console.log(doublyLinkedList);
