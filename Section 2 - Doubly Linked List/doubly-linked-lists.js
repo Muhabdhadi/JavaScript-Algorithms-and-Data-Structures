@@ -84,12 +84,45 @@ class DoublyLinkedList {
         this.length++;
         return this
     }
+
+    get(index) {
+        if(index < 0 || index >= this.length) return  null;
+        let count;
+        let current;
+        if(index <= this.length/2) {
+            count = 0;
+            current = this.head;
+            while(count != index) {
+                current = current.next;
+                count++;
+            }
+        } else {
+            count = this.length - 1;
+            current = this.tail;
+            while(count != index) {
+                current = current.prev;
+                count--;
+            }
+        }
+        return current;
+    }
 }
 
 let doublyLinkedList = new DoublyLinkedList();
-doublyLinkedList.push('Harry');
-doublyLinkedList.push('Ron');
-doublyLinkedList.push('Hermione');
-doublyLinkedList.unshift('Muhammad');
+doublyLinkedList.push('1');
+doublyLinkedList.push('2');
+doublyLinkedList.push('3');
+doublyLinkedList.push('4');
+doublyLinkedList.push('5');
+doublyLinkedList.push('6');
+doublyLinkedList.push('7');
+doublyLinkedList.push('8');
+doublyLinkedList.push('9');
+doublyLinkedList.push('10');
+
+console.log(doublyLinkedList.get(-1));
+console.log(doublyLinkedList.get(0));
+console.log(doublyLinkedList.get(1));
+console.log(doublyLinkedList.get(2));
 
 console.log(doublyLinkedList);
