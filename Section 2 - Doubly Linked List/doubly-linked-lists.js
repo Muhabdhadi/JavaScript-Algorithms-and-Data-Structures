@@ -106,6 +106,17 @@ class DoublyLinkedList {
         }
         return current;
     }
+
+    set(index, value) {
+        const node = this.get(index);
+        
+        if(node) {
+            node.val = value;
+            return true
+        }
+
+        return false;
+    }
 }
 
 let doublyLinkedList = new DoublyLinkedList();
@@ -120,9 +131,6 @@ doublyLinkedList.push('8');
 doublyLinkedList.push('9');
 doublyLinkedList.push('10');
 
-console.log(doublyLinkedList.get(-1));
-console.log(doublyLinkedList.get(0));
-console.log(doublyLinkedList.get(1));
-console.log(doublyLinkedList.get(2));
+doublyLinkedList.set(9, 'Last');
 
 console.log(doublyLinkedList);
