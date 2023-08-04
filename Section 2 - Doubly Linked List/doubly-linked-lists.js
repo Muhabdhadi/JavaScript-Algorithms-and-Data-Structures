@@ -138,16 +138,38 @@ class DoublyLinkedList {
         
         return true;
     }
+
+    remove(index) {
+        if(index < 0 || index >= this.length) return false;
+
+        if(index === 0) return !!this.shift();
+
+        if(index === this.length - 1) return !!this.pop();
+
+        const toRemoveNode = this.get(index);
+        
+        const beforeNode = toRemoveNode.prev;
+        
+        const afterNode = toRemoveNode.next;
+        
+        beforeNode.next = afterNode;
+        
+        afterNode.prev = beforeNode;
+        
+        toRemoveNode.next = null
+        
+        toRemoveNode.prev = null;
+        
+        this.length--;
+        
+        return toRemoveNode;
+    }
 }
 
 let doublyLinkedList = new DoublyLinkedList();
 doublyLinkedList.push('1');
 doublyLinkedList.push('2');
-
-console.log(doublyLinkedList.insert(0, 'Very First'));
-console.log(doublyLinkedList.insert(3, 'Very Last'));
-console.log(doublyLinkedList.insert(6, 'Very Last'));
-
-
+doublyLinkedList.push('3');
+doublyLinkedList.remove(1);
 
 console.log(doublyLinkedList);
