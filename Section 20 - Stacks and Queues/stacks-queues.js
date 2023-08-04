@@ -26,10 +26,36 @@ class Stack {
         
         return ++this.size;
     }
+
+    pop() {
+        if(!this.size) return null;
+        
+        const currentFirst = this.first;
+
+        if(this.size === 1) {
+            
+            this.first = null;
+            
+            this.last = null;
+
+        } else {
+            this.first = currentFirst.next;
+        }
+
+        this.size--;
+
+        return currentFirst.value;
+    }
 }
 
 const stack = new Stack();
 stack.push('1');
 stack.push('2');
 stack.push('3');
+console.log(stack.pop());
+console.log(stack.pop());
+console.log(stack.pop());
+console.log(stack.pop());
+
+
 console.log(stack);
