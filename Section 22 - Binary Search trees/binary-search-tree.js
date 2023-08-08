@@ -26,18 +26,15 @@ class BinarySearchTree {
         while(treeNode) {
             switch (treeNode.value != null) {
                 case newNode.value > treeNode.value:
-                    debugger;
                     selectedNode = treeNode
                     treeNode = treeNode.right;
                 break;
 
                 case newNode.value < treeNode.value:
-                    debugger;
                     selectedNode = treeNode
                      treeNode = treeNode.left
                     break;
                 case newNode.value === treeNode.value:
-                    debugger;
                     return undefined;
             }
         }
