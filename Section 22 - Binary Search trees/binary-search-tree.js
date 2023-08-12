@@ -13,7 +13,6 @@ class BinarySearchTree {
     }
 
     insert(value) {
-        debugger;
         let newNode = new Node(value);
 
         if(!this.root) {
@@ -141,7 +140,51 @@ class BinarySearchTree {
         return visited;
     }
 
+    deepthFirstSearchPreOder() {
+        let visted = [];
+        
+       const traverse = (node) => {
+            visted.push(node.value);
+        
+            if(node.left) {
+                traverse(node.left);
+            }
+    
+            if (node.right) {
+                traverse(node.right);
+            }
+        }
+
+        traverse(this.root);
+        
+        return visted;
+    }
+
+    
+    deepthFirstSearchPostOrder() {
+        debugger;
+        let visted = [];
+        
+       const traverse = (node) => {
+        debugger;
+            if(node.left) {
+                traverse(node.left);
+            }
+    
+            if (node.right) {
+                traverse(node.right);
+            }
+            visted.push(node.value);
+
+        }
+
+        traverse(this.root);
+        
+        return visted;
+    }
+
 }
+
 
 const binarySearchTree = new BinarySearchTree();
 console.log(binarySearchTree.insert(10));
@@ -150,7 +193,8 @@ console.log(binarySearchTree.insert(15));
 console.log(binarySearchTree.insert(3));
 console.log(binarySearchTree.insert(8));
 console.log(binarySearchTree.insert(20));
-console.log(binarySearchTree.breadthFirstSearch());
+// console.log(binarySearchTree.deepthFirstSearchPreOder());
+console.log(binarySearchTree.deepthFirstSearchPostOrder());
 
 
 // console.log(binarySearchTree);
