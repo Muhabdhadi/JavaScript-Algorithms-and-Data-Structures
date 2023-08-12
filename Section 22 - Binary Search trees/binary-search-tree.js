@@ -117,20 +117,40 @@ class BinarySearchTree {
         }
     }
 
+    breadthFirstSearch() {
+        const queue = [];
+        const visited = [];
+        let node = this.root;
+
+        queue.push(node);
+        debugger
+        while(queue.length) {
+            debugger;
+           node = queue.shift();
+           visited.push(node.value);
+
+           if(node.left) {
+            queue.push(node.left);
+           }
+
+           if(node.right) {
+            queue.push(node.right);
+           }
+
+        }
+        return visited;
+    }
+
 }
 
 const binarySearchTree = new BinarySearchTree();
 console.log(binarySearchTree.insert(10));
-console.log(binarySearchTree.insert(5));
-console.log(binarySearchTree.insert(13));
-console.log(binarySearchTree.insert(11));
-console.log(binarySearchTree.insert(2));
-console.log(binarySearchTree.insert(16));
-console.log(binarySearchTree.insert(7));
+console.log(binarySearchTree.insert(6));
+console.log(binarySearchTree.insert(15));
 console.log(binarySearchTree.insert(3));
-console.log(binarySearchTree.insert(1));
-console.log(binarySearchTree.find(100));
-
+console.log(binarySearchTree.insert(8));
+console.log(binarySearchTree.insert(20));
+console.log(binarySearchTree.breadthFirstSearch());
 
 
 // console.log(binarySearchTree);
