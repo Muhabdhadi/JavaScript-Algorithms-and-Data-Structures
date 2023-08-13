@@ -183,6 +183,28 @@ class BinarySearchTree {
         return visted;
     }
 
+    deepthFirstSearchInOrder() {
+        debugger;
+        const visited = [];
+
+        const traverse = (node) => {
+            debugger;
+            if(node.left) {
+                traverse(node.left);
+            }
+
+            visited.push(node.value);
+
+            if(node.right) {
+                traverse(node.right);
+            }
+        }
+
+        traverse(this.root);
+
+        return visited;
+    }
+
 }
 
 
@@ -194,7 +216,8 @@ console.log(binarySearchTree.insert(3));
 console.log(binarySearchTree.insert(8));
 console.log(binarySearchTree.insert(20));
 // console.log(binarySearchTree.deepthFirstSearchPreOder());
-console.log(binarySearchTree.deepthFirstSearchPostOrder());
+// console.log(binarySearchTree.deepthFirstSearchPostOrder());
+console.log(binarySearchTree.deepthFirstSearchInOrder());
 
 
 // console.log(binarySearchTree);
